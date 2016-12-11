@@ -1,16 +1,16 @@
 var express = require('express')
 var app = express()
 var mongo = require('mongodb')
-// var mongourl = 'mongodb://localhost:27017/url-shorten';
-// console.log(process.env);
-mongo.MongoClient.connect(process.env.MONGOLAB_URI|| 'mongodb://localhost:27017/url-shorten' , function(err, db) {
+    // var mongourl = 'mongodb://localhost:27017/url-shorten';
+    // console.log(process.env);
+mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shorten', function(err, db) {
     if (err) {
         throw new Err("Connect database fail");
     } else {
         console.log("Connect database successful")
     }
     app.get('/', function(req, res) {
-        res.send('Put <h1>/new/youUrl</h1> after url to get shortenUrl<br><hr> And then put <h1>/short_url</h1> after url to redirect original website' );
+        res.send('Put <h1>/new/youUrl</h1> after url to get shortenUrl<br><hr> And then put <h1>/short_url</h1> after url to redirect original website');
     })
 
     app.get('/:url', function(req, res) {
@@ -90,6 +90,7 @@ function findUrl(link, db, res) {
     });
 }
 
-app.listen(8080, function() {
-    console.log('Example app listening on port 8080!')
-})
+var port = process.env.PORT || 8080;
+app.listen(port, function() {
+    console.log('Node.js listening on port ' + port);
+});
