@@ -1,8 +1,9 @@
 var express = require('express')
 var app = express()
 var mongo = require('mongodb')
+var mongourl = "mongodb://hoangnguyenhuu:123456@ds127938.mlab.com:27938/url-shorten"
 
-mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shorten', function(err, db) {
+mongo.MongoClient.connect(process.env.MONGOLAB_URI || mongourl, function(err, db) {
     if (err) {
         throw new Err("Connect database fail");
     } else {
