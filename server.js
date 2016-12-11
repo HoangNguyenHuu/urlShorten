@@ -10,7 +10,7 @@ mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017
         console.log("Connect database successful")
     }
     app.get('/', function(req, res) {
-        res.send('Put <h1>/new/youUrl</h1> after url to get shortenUrl<br><hr> And then put <h1>/short_url</h1> after url to redirect original website');
+        res.send('Put <h1>/new/youUrl</h1> after url to get shortenUrl<br><hr> And then put <h1>/short_url</h1> after url to redirect original website' + process.env);
     })
 
     app.get('/:url', function(req, res) {
